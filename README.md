@@ -25,7 +25,4 @@
 
 > `git reflog` 用git reset --hard HEAD^回退到add distributed版本时，再想恢复到append GPL，就必须找到append GPL的commit id。Git提供了一个命令git reflog用来记录你的每一次命令
 
-Git is a distributed version control system.
-Git is free software distributed under the GPL.
-Git has a mutable index called stage.
-Git tracks changes.
+> `git diff HEAD` -- readme.txt命令可以查看工作区和版本库里面最新版本的区别

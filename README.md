@@ -23,17 +23,25 @@
 
 > `git reset --hard (e9af1a8f5e commit id)` 指定回到未来的某个版本,版本号没必要写全，前几位就可以了，Git会自动去找。当然也不能只写前一两位，因为Git可能会找到多个版本号，就无法确定是哪一个了。
 
-> `git reset HEAD README.md` 可以把暂存区的修改撤销掉（unstage），重新放回工作区,这种状态是 git add 之后，可以把add到暂存区的操作撤销
+> `git reset HEAD README.md` 是将暂存区的文件撤回到工作区, 可以把暂存区的修改撤销掉（unstage），重新放回工作区,这种状态是 git add 之后，可以把add到暂存区的操作撤销
 
 > `git reflog` 用git reset --hard HEAD^回退到add distributed版本时，再想恢复到append GPL，就必须找到append GPL的commit id。Git提供了一个命令git reflog用来记录你的每一次命令
 
 > `git diff HEAD -- README.md` 命令可以查看工作区和版本库里面最新版本的区别
 
-> `git checkout -- README.md` 意思就是，把README.md文件在工作区的修改全部撤销，这里有两种情况：
+> `git checkout -- README.md` 意思就是，将工作区的修改恢复到之前未修改的状态（即之前的状态）。把README.md文件在工作区的修改全部撤销，这里有两种情况：
 
 > 一种是README.md自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；  一种是README.md已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
 
 > 总之，就是让这个文件回到最近一次git commit或git add时的状态。 `git checkout -- file` 命令中的`--`很重要，没有--，就变成了`切换到另一个分支`的命令，我们在后面的分支管理中会再次遇到git checkout命令。
 
 
+```
+小结
 
+场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
+
+场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作 (git checkout -- file)。
+
+场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节(git reset --hard (e9af1a8f5e commit id))，不过前提是没有推送到远程库。
+```

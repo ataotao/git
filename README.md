@@ -26,3 +26,5 @@
 > `git reflog` 用git reset --hard HEAD^回退到add distributed版本时，再想恢复到append GPL，就必须找到append GPL的commit id。Git提供了一个命令git reflog用来记录你的每一次命令
 
 > `git diff HEAD -- readme.txt` 命令可以查看工作区和版本库里面最新版本的区别
+
+> My stupid boss still prefers SVN.

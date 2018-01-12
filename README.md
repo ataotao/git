@@ -79,5 +79,7 @@ Switched to branch 'dev'
 ```
 > `git branch` 命令会列出所有分支，当前分支前面会标一个*号。
 
+> `git merge dev`命令用于合并指定分支到当前分支。合并后，再查看readme.txt的内容，就可以看到，和dev分支的最新提交是完全一样的
 
+> `git branch -d dev` 删除分支
 

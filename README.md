@@ -89,3 +89,4 @@ Switched to branch 'dev'
 
 > `git merge --no-ff -m "test" dev`  合并dev分支，请注意--no-ff参数，表示禁用Fast forward：合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
 
+> `git stash` 可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作, 执行完毕后，用`git status`查看工作区，就是干净的（除非有没有被Git管理的文件），因此可以放心地创建分支来修复bug。 首先确定要在哪个分支上修复bug，假定需要在master分支上修复，就从master创建临时分支： `git checkout master` `git checkout -b issue-101`

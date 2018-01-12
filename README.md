@@ -85,8 +85,28 @@ Switched to branch 'dev'
 
 > `git branch -d dev` 删除分支
 
-Creating a new branch is quick & simple.
+> `git log --graph` 命令可以看到分支合并图。, 当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。
 
-sdadada
-dsada
-dsadsa
+> `git merge --no-ff -m "test" dev`  合并dev分支，请注意--no-ff参数，表示禁用Fast forward：合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
+
+> `git stash` 可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作, 执行完毕后，用`git status`查看工作区，就是干净的（除非有没有被Git管理的文件），因此可以放心地创建分支来修复bug。 首先确定要在哪个分支上修复bug，假定需要在master分支上修复，就从master创建临时分支：流程如下
+
+```
+ git checkout master
+ git checkout -b issue-101
+ /*
+ 在master基础上创建的issue-101分支里修复bug
+ 修复完成继续下面动作
+ */
+ git checkout master
+ git merge --no-ff -m "merged bug fix 101" issue-101
+ git branch -d issue-101
+```
+
+> `git stash list` 修复完成后，`git checkout dev` `git status` 工作区是干净的，刚才的工作现场存到哪去了？用git stash list命令看看：
+
+> 工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，有两个办法：
+
+> 一是用`git stash apply`恢复，但是恢复后，stash内容并不删除，你需要用`git stash drop`来删除；
+
+> 另一种方式是用`git stash pop`，恢复的同时把stash内容也删了：

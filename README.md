@@ -50,3 +50,34 @@
 > `git rm test.txt`  从版本库中删除该文件, 确实要从版本库中删除该文件，那就用命令git rm删掉，并且git commit： 文件就从版本库中被删除了。
 
 > 另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本： $ git checkout -- test.txt, git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。
+
+
+### 远程仓库
+
+> `sh-keygen -t rsa -C tzvuf@163.com`  创建SSH Key。在用户主目录(C:\Users\Administrator\.ssh)下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：
+
+> 把本地库的所有内容推送到远程库上：把本地库的内容推送到远程，用git push命令，实际上是把当前分支master推送到远程。由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。推送成功后，可以立刻在GitHub页面中看到远程库的内容已经和本地一模一样：
+
+> `git remote add origin https://github.com/ataotao/git.git`
+
+> `git push -u origin master`
+
+> `git push origin master` 从现在起，只要本地作了提交，就可以通过此简化命令
+
+> `git clone git@github.com:ataotao/git.git`  从远程库克隆
+
+
+### 分支管理
+
+> `git checkout -b dev` 创建dev分支，然后切换到dev分支
+
+> git checkout命令加上-b参数表示创建并切换，相当于以下两条命令：
+```
+$ git branch dev
+$ git checkout dev
+Switched to branch 'dev'
+```
+> `git branch` 命令会列出所有分支，当前分支前面会标一个*号。
+
+
+

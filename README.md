@@ -135,3 +135,30 @@ Switched to branch 'dev'
     总之，就是在Git中，分支完全可以在本地自己藏着玩，是否推送，视你的心情而定！
     */
 ```
+
+### 标签
+
+> `git tag v1.0` 首先，切换到需要打标签的分支上：`git tag v1.0`
+
+> `git tag` 可以用命令git tag查看所有标签
+
+
+> 默认标签是打在最新提交的commit上的。有时候，如果忘了打标签，比如，现在已经是周五了，但应该在周一打的标签没有打，怎么办？方法是找到历史提交的commit id，然后打上就可以了：
+
+> `git log --pretty=oneline --abbrev-commit` 获取历史commitID, `git tag v0.9 6224937` 对应相应的id打上标签即可
+
+> `git show v0.0`注意，标签不是按时间顺序列出，而是按字母排序的。可以用git show <tagname>查看标签信息：
+
+> `git tag -a v0.1 -m "version 0.1 released" e9af1a8` 还可以创建带有说明的标签，用-a指定标签名，-m指定说明文字：
+
+> `git tag -s v0.2 -m "signed version 0.2 released" fec145a` 还可以通过-s用私钥签名一个标签： 签名采用PGP签名，因此，必须首先安装gpg（GnuPG），如果没有找到gpg，或者没有gpg密钥对，就会报错：
+
+> `git tag -d v0.1` 如果标签打错了，也可以删除：因为创建的标签都只存储在本地，不会自动推送到远程。所以，打错的标签可以在本地安全删除。
+
+> `git push origin v0.1` 如果要推送某个标签到远程，使用命令git push origin <tagname>：
+
+> `git push origin --tags` 一次性推送全部尚未推送到远程的本地标签：
+
+> `git tag -d v0.9`(本地删除) `git push origin :refs/tags/v0.9`(远程删除) 如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除：
+
+> `git config --global color.ui true`  让Git显示颜色，会让命令输出看起来更醒目：

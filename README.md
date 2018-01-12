@@ -85,4 +85,6 @@ Switched to branch 'dev'
 
 > `git branch -d dev` 删除分支
 
-Creating a new branch is quick & simple.
+> `git log --graph` 命令可以看到分支合并图。, 当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。
+
+
